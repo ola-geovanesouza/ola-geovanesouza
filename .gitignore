@@ -5,3 +5,10 @@ dist/
 !.env.example
 .DS_Store
 *.log
+# Local Codex context and working reviews
+.agents/
+.codex/
+AGENTS.md
+REVENUE-CENTRIC-REVIEW.md
+SEO-AUDIT.md
+design-qa.md
