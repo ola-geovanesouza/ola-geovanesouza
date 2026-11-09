@@ -1449,6 +1449,10 @@ h1 {
   transition: padding 180ms ease, border-color 180ms ease;
 }
 
+.business-card:last-child {
+  border-bottom: 0;
+}
+
 .business-card:hover {
   padding-inline: 16px;
 }
