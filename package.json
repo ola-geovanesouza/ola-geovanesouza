@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/prerender.mjs && node scripts/prepare-sites-build.mjs",
     "preview": "vite preview",
+    "start": "vite preview --host 0.0.0.0 --port ${PORT:-4173}",
     "test:sites": "node --test tests/sites-worker.test.mjs",
     "test:seo": "node --test tests/seo-output.test.mjs"
   },
