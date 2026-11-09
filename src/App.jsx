@@ -151,7 +151,7 @@ const recommendations = [
   { name: "Roberto Carlos", role: "CTO e Fullstack na Young DevOps", text: "Profissional de grande excelência em tecnologia, com ótimos documentos de projetos e protótipos de estilo moderno.", image: robertoCarlosPortrait },
   { name: "Jônathas Moreira", role: "Analista de Cybersecurity SOC na TLD", text: "Tive a imensa oportunidade de trabalhar na mesma equipe que Geovane, extremamente qualificado e sempre em busca de novos aprendizados.", image: jonathasMoreiraPortrait },
   { name: "Tiago Ferreira", role: "Sócio-Administrador e Gestor na Cuida e Amor", text: "Agradeço à Geovane por ser parte fundamental da nossa jornada de transformação, e estamos ansiosos para continuar essa trajetória futuramente.", image: tiagoFerreiraPortrait },
-  { name: "Beatriz Sousa", role: "Ativista e Articuladora de Juventude no Instituto Odara", text: "Desde o começo eu fiquei super feliz com a atenção aos detalhes, a comunicação aberta e todo o esforço de Geovane pra deixar tudo do jeitinho que eu imaginava. Ótimo profissional!", image: beatrizSousaPortrait },
+  { name: "Beatriz Sousa", role: "Ativista no Instituto Odara", text: "Desde o começo eu fiquei super feliz com a atenção aos detalhes, a comunicação aberta e todo o esforço de Geovane pra deixar tudo do jeitinho que eu imaginava. Ótimo profissional!", image: beatrizSousaPortrait },
 ];
 
 function scrollToSection(event, id) {
