@@ -1326,10 +1326,11 @@ h1 {
 
 .contact-watermark sup {
   position: relative;
-  top: -0.75em;
+  top: 0;
   margin-left: 0.04em;
   font-size: 0.3em;
   letter-spacing: 0;
+  vertical-align: 0.55em;
   -webkit-text-stroke-width: 0.5px;
 }
 
