@@ -84,6 +84,40 @@ a:focus-visible {
   --orange: #ff4b17;
 }
 
+.site-nav,
+.hero {
+  --black: #0b0b0b;
+  --white: #f7f7f5;
+  --gray: #b5b5af;
+  --line: rgba(247, 247, 245, 0.22);
+  --blue: #2f5fd9;
+  --green: #00be62;
+  --yellow: #ffd35a;
+  --orange: #ff4b17;
+  position: relative;
+  isolation: isolate;
+  color: var(--white);
+}
+
+.site-nav::before,
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  background: #0b0b0b;
+  content: "";
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.site-shell[data-theme="light"] main {
+  background: #f7f7f5;
+  color: #0b0b0b;
+}
+
 .site-shell[data-theme="light"] .project-card,
 .site-shell[data-theme="light"] .project-detail {
   background: #ffffff;
@@ -215,31 +249,6 @@ a:focus-visible {
 .mobile-menu-toggle,
 .mobile-menu {
   display: none;
-}
-
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-left: auto;
-  padding: 0;
-  background: transparent;
-  color: var(--gray);
-  cursor: pointer;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: color 180ms ease;
-}
-
-.theme-toggle:hover {
-  color: var(--yellow);
-}
-
-.theme-toggle svg {
-  color: var(--yellow);
-  font-size: 16px;
 }
 
 .desktop-nav a,
@@ -897,8 +906,18 @@ h1 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   margin-top: 38px;
-  padding-top: 3px;
-  background: linear-gradient(90deg, var(--blue) 0%, var(--orange) 34%, var(--green) 68%, var(--yellow) 100%) top / 100% 3px no-repeat;
+  --work-gradient-shift: 0%;
+  animation: work-gradient-flow 12s linear infinite;
+}
+
+@property --work-gradient-shift {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+@keyframes work-gradient-flow {
+  to { --work-gradient-shift: 133.333%; }
 }
 
 .selected-work-hint {
@@ -906,6 +925,7 @@ h1 {
 }
 
 .selected-work-card {
+  position: relative;
   display: flex;
   min-height: 278px;
   flex-direction: column;
@@ -914,6 +934,23 @@ h1 {
   border: 1px solid var(--line);
   border-top: 0;
 }
+
+.selected-work-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background-image: linear-gradient(90deg, var(--blue) 0%, var(--orange) 25%, var(--green) 50%, var(--yellow) 75%, var(--blue) 100%);
+  background-repeat: repeat-x;
+  background-size: 400% 100%;
+  background-position-x: calc(var(--segment-position, 0%) + var(--work-gradient-shift));
+  content: "";
+}
+
+.selected-work-card:nth-child(2) { --segment-position: 33.333%; }
+.selected-work-card:nth-child(3) { --segment-position: 66.667%; }
+.selected-work-card:nth-child(4) { --segment-position: 100%; }
 
 @media (max-width: 1040px) {
   .selected-work-grid {
@@ -1941,10 +1978,52 @@ h1 {
     align-items: flex-start;
   }
 
-  .fit-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .fit-grid,
+  .recognition-grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 88%;
+    align-items: stretch;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 5px 12px 18px 4px;
+    margin-right: -8px;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 4px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gray) transparent;
+    -webkit-overflow-scrolling: touch;
   }
+
+  .fit-item,
+  .recognition-proof {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .fit-item {
+    padding: 16px 17px 18px;
+    transform: none;
+  }
+
+  .fit-item:nth-child(2),
+  .fit-item:nth-child(3) { transform: none; }
+
+  .fit-item h4 { font-size: 20px; }
+
+  .fit-grid::-webkit-scrollbar,
+  .recognition-grid::-webkit-scrollbar { height: 3px; }
+
+  .fit-grid::-webkit-scrollbar-thumb,
+  .recognition-grid::-webkit-scrollbar-thumb { background: var(--gray); }
 
   .fit-item {
     min-height: 0;
@@ -1991,11 +2070,6 @@ h1 {
     background: transparent;
     color: var(--white);
     cursor: pointer;
-  }
-
-  .theme-toggle {
-    margin-left: auto;
-    margin-right: 8px;
   }
 
   .brand-lockup > span:last-child {
@@ -2268,8 +2342,8 @@ h1 {
 
   .business-card {
     grid-template-columns: 36px minmax(0, 1fr) 20px;
-    gap: 12px;
-    padding: 23px 0;
+    gap: 10px;
+    padding: 17px 0;
   }
 
   .business-card:hover {
@@ -2277,12 +2351,63 @@ h1 {
   }
 
   .business-card h3 {
-    font-size: 30px;
+    margin-top: 6px;
+    font-size: 25px;
+    line-height: 1;
+  }
+
+  .business-list { margin-top: 48px; }
+
+  .business-number,
+  .business-type,
+  .business-status { font-size: 9px; }
+
+  .business-card p {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .business-status { margin-top: 11px; }
+
+  .business-visit {
+    margin-top: 10px;
+    font-size: 10px;
   }
 
   .recognition-proof {
-    min-height: 0;
-    padding: 22px;
+    padding: 20px;
+  }
+
+  .recognition-grid { margin-top: 44px; }
+
+  .recognition-proof h3 {
+    margin-top: 10px;
+    font-size: 22px;
+  }
+
+  .recognition-proof p { font-size: 13px; }
+
+  .fit-grid { margin-top: 28px; }
+
+  .fit-item p { font-size: 12px; }
+
+  .availability-pill {
+    order: 1;
+    gap: 0;
+    margin-left: auto;
+    margin-right: 0;
+    font-size: 0;
+  }
+
+  .availability-dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .mobile-menu-toggle {
+    order: 2;
+    margin: 0 0 0 12px;
   }
 
   .recommendation-card {
@@ -2406,7 +2531,7 @@ h1 {
 
   .availability-pill {
     gap: 0;
-    margin-left: 4px;
+    margin-left: auto;
     font-size: 0;
   }
 
@@ -2431,6 +2556,11 @@ h1 {
 
   .hero-accent-line,
   .hero-product-name { animation: none !important; }
+
+  .selected-work-grid {
+    --work-gradient-shift: 0%;
+    animation: none !important;
+  }
 }
 
 @media (max-width: 720px) {
@@ -2441,7 +2571,7 @@ h1 {
     gap: 14px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 3px 0 10px;
+    padding: 0 0 10px;
     scroll-padding-inline: 0;
     scroll-snap-type: x mandatory;
     overscroll-behavior-inline: contain;
