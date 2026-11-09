@@ -1,5 +1,0 @@
-RewriteEngine On
-
-# Keep the Hostinger setup hostname out of public search and sharing URLs.
-RewriteCond %{HTTP_HOST} ^ghostwhite-toad-124757\.hostingersite\.com$ [NC]
-RewriteRule ^ https://geovanesouza.com%{REQUEST_URI} [R=301,L,NE]
