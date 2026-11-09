@@ -526,7 +526,7 @@ h1 {
 .hero-main > .eyebrow { justify-content: center; }
 .hero-main h1 { max-width: 1080px; margin-inline: auto; font-size: clamp(56px, 8.4vw, 118px); line-height: 0.98; }
 .hero-accent-line { display: block; width: 128px; height: 3px; margin: 18px auto 0; transform: scaleX(0); transform-origin: center; background: linear-gradient(90deg, var(--blue), var(--green), var(--orange), var(--blue)); background-size: 300% 100%; animation: hero-gradient-flow 5s linear infinite; }
-.hero-product-name { animation: hero-product-color 12s ease-in-out infinite; }
+.hero-product-name { animation: hero-product-color 8s ease-in-out infinite; }
 @keyframes hero-gradient-flow { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
 @keyframes hero-product-color {
   0%, 100% { color: var(--blue); }
@@ -538,7 +538,42 @@ h1 {
 .hero-action-stack, .hero-actions { justify-content: center; }
 .hero-action-note { text-align: center; }
 .hero-trust { justify-content: center; margin-inline: auto; }
-.hero-tags { justify-content: center; margin-top: 28px; }
+.hero-tags {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.hero-tag-group {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding-inline: 14px;
+}
+
+.hero-tag-group + .hero-tag-group {
+  border-left: 1px solid var(--line);
+}
+
+.hero-tag-group-title {
+  color: var(--gray);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hero-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
 .proof-strip { margin-top: 46px; }
 
 .hero-projects {
@@ -1309,7 +1344,7 @@ h1 {
 
 .contact-watermark {
   position: absolute;
-  top: -0.48em;
+  top: -0.56em;
   left: 4%;
   z-index: 0;
   color: color-mix(in srgb, var(--gray) 20%, transparent);
@@ -1330,7 +1365,7 @@ h1 {
   margin-left: 0.04em;
   font-size: 0.3em;
   letter-spacing: 0;
-  vertical-align: 0.55em;
+  vertical-align: 1.3em;
   -webkit-text-stroke-width: 0.5px;
 }
 
@@ -2068,7 +2103,19 @@ h1 {
   }
 
   .hero-tags {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
     margin-top: 24px;
+  }
+
+  .hero-tag-group {
+    padding: 9px 0 0;
+  }
+
+  .hero-tag-group + .hero-tag-group {
+    border-top: 1px solid var(--line);
+    border-left: 0;
   }
 
   .hero-trust {

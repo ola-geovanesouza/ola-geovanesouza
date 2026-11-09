@@ -123,7 +123,11 @@ const fitSituations = [
   { number: "03", title: "Aplicar IA com propósito", description: "Identificar tarefas e decisões em que IA pode reduzir esforço ou ampliar capacidade." },
 ];
 
-const areas = ["Produto", "IA", "Design", "UX", "Liderança", "Estratégia", "SEO", "Pesquisa", "Benchmark", "Processos"];
+const areaGroups = [
+  { title: "Produto e estratégia", items: ["Produto", "Estratégia", "Pesquisa", "Benchmark", "Processos"] },
+  { title: "Experiência digital", items: ["Design", "UX", "SEO"] },
+  { title: "Tecnologia e liderança", items: ["IA", "Liderança"] },
+];
 
 const navItems = [
   { label: "Projetos", href: "#projetos" },
@@ -296,7 +300,7 @@ export function App() {
             </div>
           </div>
           <a className="hero-trust" href="#reconhecimento" onClick={(event) => scrollToSection(event, "#reconhecimento")}>5 reconhecimentos profissionais <span aria-hidden="true">·</span> Programa registrado no INPI <PiArrowRight aria-hidden="true" weight="bold" /></a>
-          <div className="hero-tags" aria-label="Áreas de atuação">{areas.map((tag, index) => <span className={`tag tag-${(index % 4) + 1}`} key={tag}>{tag}</span>)}</div>
+          <div className="hero-tags" aria-label="Áreas de atuação">{areaGroups.map((group) => <div className="hero-tag-group" key={group.title}><span className="hero-tag-group-title">{group.title}</span><div className="hero-tag-list">{group.items.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div></div>)}</div>
         </div>
         <div className="proof-strip" aria-label="Provas e credenciais"><div><strong>01</strong><span>programa de computador<br />registrado no INPI</span></div><div><strong>03</strong><span>operações<br />em atividade</span></div><div><strong>05</strong><span>premiações<br />de parceiros</span></div><div><strong>+10</strong><span>leads<br />apoiados</span></div><div><strong>+10</strong><span>recomendações<br />de profissionais</span></div><div><strong>+15</strong><span>produtos digitais<br />criados</span></div></div>
       </section>
