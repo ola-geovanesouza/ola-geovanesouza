@@ -133,7 +133,7 @@ const fitSituations = [
   { number: "03", title: "Aplicar IA com propósito", description: "Identificar tarefas e decisões em que IA pode reduzir esforço ou ampliar capacidade." },
 ];
 
-const areas = ["Produto", "Estratégia", "Pesquisa", "Benchmark", "Processos", "Design", "UX", "SEO", "IA", "Liderança"];
+const areas = ["Produto", "Estratégia", "Pesquisa", "Benchmark", "Processos", "Design", "UX", "Engenharia", "IA", "SEO", "Liderança"];
 
 const navItems = [
   { label: "Projetos", href: "#projetos" },

@@ -1052,7 +1052,8 @@ h1 {
   align-items: start;
   gap: 18px;
   margin-top: 42px;
-  perspective: 1100px;
+  perspective: 900px;
+  transform-style: preserve-3d;
 }
 
 .fit-item {
@@ -1479,7 +1480,7 @@ h1 {
 }
 
 .business-list {
-  margin-top: 74px;
+  margin-top: 54px;
   border-top: 1px solid var(--line);
 }
 
@@ -1488,7 +1489,7 @@ h1 {
   grid-template-columns: 70px minmax(0, 1fr) 28px;
   gap: 26px;
   align-items: center;
-  padding: 28px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--line);
   border-left: 3px solid transparent;
   color: var(--white);
@@ -1529,23 +1530,23 @@ h1 {
 }
 
 .business-card h3 {
-  margin-top: 8px;
-  font-size: clamp(28px, 4vw, 52px);
+  margin-top: 6px;
+  font-size: clamp(27px, 3.4vw, 44px);
   font-weight: 500;
   line-height: 0.95;
 }
 
 .business-card p {
   max-width: 600px;
-  margin-top: 12px;
+  margin-top: 9px;
   color: var(--gray);
-  font-size: 15px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .business-status {
   display: inline-block;
-  margin-top: 17px;
+  margin-top: 12px;
   color: var(--white);
 }
 
@@ -1553,7 +1554,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin: 17px 0 0 20px;
+  margin: 12px 0 0 20px;
   color: var(--white);
   font-size: 11px;
   font-weight: 800;
@@ -2002,7 +2003,7 @@ h1 {
     gap: 14px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 5px 12px 18px 4px;
+    padding: 18px 16px 26px 10px;
     margin-right: -8px;
     overscroll-behavior-inline: contain;
     scroll-padding-inline: 4px;
@@ -2355,8 +2356,8 @@ h1 {
 
   .business-card {
     grid-template-columns: 36px minmax(0, 1fr) 20px;
-    gap: 10px;
-    padding: 17px 0;
+    gap: 9px;
+    padding: 13px 0;
   }
 
   .business-card:hover {
@@ -2364,27 +2365,27 @@ h1 {
   }
 
   .business-card h3 {
-    margin-top: 6px;
-    font-size: 25px;
-    line-height: 1;
+    margin-top: 5px;
+    font-size: 22px;
+    line-height: 1.04;
   }
 
-  .business-list { margin-top: 48px; }
+  .business-list { margin-top: 34px; }
 
   .business-number,
   .business-type,
   .business-status { font-size: 9px; }
 
   .business-card p {
-    margin-top: 8px;
-    font-size: 13px;
-    line-height: 1.4;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.35;
   }
 
-  .business-status { margin-top: 11px; }
+  .business-status { margin-top: 8px; }
 
   .business-visit {
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 10px;
   }
 
@@ -2933,21 +2934,21 @@ h1 {
   }
 
   .fit-grid .fit-item {
-    box-shadow: 7px 7px 0 color-mix(in srgb, var(--fit-accent) 78%, transparent);
-    transform: perspective(900px) rotateX(5deg) rotateZ(-0.8deg) translateY(8px);
+    box-shadow: 8px 8px 0 color-mix(in srgb, var(--fit-accent) 78%, transparent);
+    transform: perspective(760px) rotateX(10deg) rotateY(-2deg) rotateZ(-1deg) translateY(8px);
   }
 
   .fit-grid .fit-item:nth-child(2) {
-    transform: perspective(900px) rotateX(5deg) translateY(0);
+    transform: perspective(760px) rotateX(10deg) rotateY(-2deg) rotateZ(-1deg) translateY(0);
   }
 
   .fit-grid .fit-item:nth-child(3) {
-    transform: perspective(900px) rotateX(5deg) rotateZ(0.8deg) translateY(-8px);
+    transform: perspective(760px) rotateX(10deg) rotateY(-2deg) rotateZ(-1deg) translateY(-8px);
   }
 
   .fit-grid .fit-item:hover,
   .fit-grid .fit-item:focus-within {
-    box-shadow: 5px 9px 0 color-mix(in srgb, var(--fit-accent) 78%, transparent);
-    transform: perspective(900px) rotateX(0) rotateZ(0) translateY(-4px);
+    box-shadow: 6px 10px 0 color-mix(in srgb, var(--fit-accent) 78%, transparent);
+    transform: perspective(760px) rotateX(0) rotateY(0) rotateZ(0) translateY(-4px);
   }
 }
