@@ -2931,4 +2931,23 @@ h1 {
     flex: 0 0 44px;
     margin: 0 0 0 12px;
   }
+
+  .fit-grid .fit-item {
+    box-shadow: 7px 7px 0 color-mix(in srgb, var(--fit-accent) 78%, transparent);
+    transform: perspective(900px) rotateX(5deg) rotateZ(-0.8deg) translateY(8px);
+  }
+
+  .fit-grid .fit-item:nth-child(2) {
+    transform: perspective(900px) rotateX(5deg) translateY(0);
+  }
+
+  .fit-grid .fit-item:nth-child(3) {
+    transform: perspective(900px) rotateX(5deg) rotateZ(0.8deg) translateY(-8px);
+  }
+
+  .fit-grid .fit-item:hover,
+  .fit-grid .fit-item:focus-within {
+    box-shadow: 5px 9px 0 color-mix(in srgb, var(--fit-accent) 78%, transparent);
+    transform: perspective(900px) rotateX(0) rotateZ(0) translateY(-4px);
+  }
 }
