@@ -113,9 +113,22 @@ a:focus-visible {
   transform: translateX(-50%);
 }
 
-.site-shell[data-theme="light"] main {
+.site-shell main {
+  background: #0b0b0b;
+  color: #f7f7f5;
+}
+
+.light-content {
+  --transition-gap: clamp(104px, 12vw, 170px);
+  position: relative;
+  margin-top: calc(var(--transition-gap) / 2);
+  border-radius: 64px 64px 0 0;
   background: #f7f7f5;
   color: #0b0b0b;
+}
+
+.light-content > .projects-section {
+  padding-top: calc(var(--transition-gap) / 2);
 }
 
 .site-shell[data-theme="light"] .project-card,
@@ -207,9 +220,9 @@ a:focus-visible {
   mix-blend-mode: screen;
 }
 
-.site-shell[data-theme="light"] .brand-logo-crop img {
-  filter: invert(1) contrast(200);
-  mix-blend-mode: multiply;
+.site-shell[data-theme="light"] .site-nav .brand-logo-crop img {
+  filter: contrast(200);
+  mix-blend-mode: screen;
 }
 
 .brand-divider {
@@ -265,7 +278,7 @@ a:focus-visible {
 
 .availability-pill {
   gap: 8px;
-  margin-left: 26px;
+  margin-left: auto;
   color: var(--gray);
   font-size: 10px;
 }
@@ -2897,5 +2910,25 @@ h1 {
     margin-top: auto;
     padding-top: 10px;
     font-size: 11px;
+  }
+}
+
+@media (max-width: 720px) {
+  .light-content {
+    --transition-gap: 76px;
+    border-radius: 34px 34px 0 0;
+  }
+
+  .site-nav .availability-pill {
+    order: 1;
+    gap: 0;
+    margin: 0 0 0 auto;
+    font-size: 0;
+  }
+
+  .site-nav .mobile-menu-toggle {
+    order: 2;
+    flex: 0 0 44px;
+    margin: 0 0 0 12px;
   }
 }
