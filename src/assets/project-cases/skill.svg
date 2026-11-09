@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" fill="none">
+  <defs>
+    <linearGradient id="surface" x1="156" y1="133" x2="1375" y2="931" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8F1"/>
+      <stop offset="1" stop-color="#F1E6DB"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="444" y1="379" x2="444" y2="702" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3267E8"/>
+      <stop offset="1" stop-color="#1947B8"/>
+    </linearGradient>
+    <linearGradient id="green" x1="769" y1="292" x2="769" y2="635" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9BDB42"/>
+      <stop offset="1" stop-color="#59A923"/>
+    </linearGradient>
+    <filter id="shadow" x="174" y="158" width="1188" height="780" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+  <path fill="url(#surface)" d="M0 0h1536v1024H0z"/>
+  <ellipse cx="771" cy="787" fill="#66513E" fill-opacity=".16" filter="url(#shadow)" rx="466" ry="49"/>
+  <path d="m243 658 199-115 198 115-198 116-199-116Z" fill="#123A9B"/>
+  <path d="m243 658 199 116v-264L243 394v264Z" fill="url(#blue)"/>
+  <path d="m641 542 199-115 199 115-199 116-199-116Z" fill="#43851F"/>
+  <path d="m641 542 199 116V410L641 294v248Z" fill="url(#green)"/>
+  <path d="m1038 425 137-79 137 79-137 79-137-79Z" fill="#E33E18"/>
+  <path d="m1038 425 137 79V321l-137-78v182Z" fill="#FF6842"/>
+  <path d="m490 401 92-53 92 53-92 54-92-54Z" fill="#FFF"/>
+  <path d="m490 401 92 54v-93l-92-54v93Z" fill="#E5E1DA"/>
+  <path d="m697 283 71-41 71 41-71 41-71-41Z" fill="#FFD55A"/>
+  <path d="M768 324v-82l71 41v82l-71-41Z" fill="#E9B83D"/>
+  <path d="m1081 238 48-28 48 28-48 28-48-28Z" fill="#00A95A"/>
+  <path d="M1129 266v-56l48 28v56l-48-28Z" fill="#008648"/>
+  <path d="M442 510c82-74 181-111 297-111m30-79c92-27 177-20 255 23m94-72c32-16 66-23 102-22" stroke="#0B0B0B" stroke-opacity=".46" stroke-width="8" stroke-linecap="round" stroke-dasharray="1 22"/>
+  <circle cx="619" cy="399" r="11" fill="#FF4B17"/>
+  <circle cx="867" cy="316" r="11" fill="#2F5FD9"/>
+  <circle cx="1071" cy="236" r="11" fill="#008F4A"/>
+</svg>

@@ -812,13 +812,13 @@ h1 {
   display: flex;
   gap: 0;
   align-items: flex-start;
-  width: 500%;
+  width: 100%;
   will-change: transform;
 }
 
 .project-entry {
   display: grid;
-  flex: 0 0 20%;
+  flex: 0 0 100%;
   align-self: start;
   min-width: 0;
   padding-right: 14px;

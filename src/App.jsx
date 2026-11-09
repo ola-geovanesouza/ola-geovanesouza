@@ -18,6 +18,7 @@ import casePracticeImage from "./assets/project-cases/practice.webp";
 import caseEntrepreneurshipImage from "./assets/project-cases/entrepreneurship.webp";
 import caseSegmentsImage from "./assets/project-cases/segments.webp";
 import casePortfolioImage from "./assets/project-cases/portfolio.webp";
+import caseSkillImage from "./assets/project-cases/skill.svg";
 import andreMoraisPortrait from "./assets/recommendations/andre-morais-de-castro.webp";
 import pauloQueirozPortrait from "./assets/recommendations/paulo-queiroz.webp";
 import jonathasMoreiraPortrait from "./assets/recommendations/jonathas-moreira.webp";
@@ -84,6 +85,17 @@ const projects = [
     tags: ["Atlas AI", "Cuida e Amor", "EduServen", "Dot10", "Esportiva PvP", "Outros"],
     image: casePortfolioImage,
     accent: "blue",
+  },
+  {
+    id: "skill",
+    number: "06",
+    client: "Skill",
+    title: "Pesquisa, estratégia e execução",
+    description:
+      "Conecto pesquisa, benchmark e processos à estratégia de produto. Transformo sinais de usuários e do negócio em prioridades claras, experiências melhores e entregas acompanhadas por resultados.",
+    tags: ["Pesquisa", "Benchmark", "Processos", "Estratégia", "Produto"],
+    image: caseSkillImage,
+    accent: "orange",
   },
 ];
 
@@ -168,7 +180,7 @@ function Brand({ footer = false }) {
 
 function ProjectDetail({ project }) {
   return <article className={`project-detail project-detail-${project.accent}`}>
-    <div className="detail-topline"><span>{project.number} / 05</span></div>
+    <div className="detail-topline"><span>{project.number} / {String(projects.length).padStart(2, "0")}</span></div>
     <div className="detail-image-wrap"><img src={project.image} alt={`Ilustração de ${project.client.toLowerCase()}: ${project.title}`} width="1536" height="1024" decoding="async" /></div>
     <div className="detail-content"><div className="project-card-meta"><span>{project.client}</span><span className={`project-dot project-dot-${project.accent}`} /></div><h3>{project.title}</h3><p>{project.description}</p><div className="detail-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><a className="detail-link" href="#contato" onClick={(event) => scrollToSection(event, "#contato")}>Conversar sobre um projeto <PiArrowRight aria-hidden="true" weight="bold" /></a></div>
   </article>;
@@ -287,7 +299,7 @@ export function App() {
       <div className="light-content">
       <motion.section className="projects-section section-frame" id="projetos" aria-labelledby="projects-title" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.08 }} transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}>
         <div className="section-heading"><div><div className="eyebrow"><span className="eyebrow-line" /> Projetos e atuação</div><h2 id="projects-title">Da estratégia<br /><span className="text-blue">à entrega.</span></h2></div><p>Atuo com gestão de produto, IA aplicada e construção de negócios digitais. Explore as frentes e veja entregas do portfólio.</p></div>
-        <div className="projects-layout"><div className="projects-carousel-shell" onMouseEnter={() => setCarouselPaused(true)} onMouseLeave={() => setCarouselPaused(false)} onFocusCapture={() => setCarouselPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setCarouselPaused(false); }}><button className="carousel-control carousel-control-previous" type="button" onClick={() => stepProject(-1)} disabled={carouselIndex === 0} aria-label="Ir para a área anterior"><span>Anterior</span><PiArrowLeft aria-hidden="true" weight="bold" /></button><div className="projects-carousel" ref={projectsCarouselRef} role="region" aria-label={`Carrossel de frentes de atuação — área ${carouselIndex + 1} de ${projects.length}`} aria-roledescription="carrossel"><motion.div className="projects-list" drag="x" dragConstraints={projectsCarouselRef} dragElastic={0.06} dragMomentum={false} onDragEnd={handleProjectDragEnd} animate={{ x: `${-carouselIndex * 20}%` }} transition={{ type: "spring", stiffness: 110, damping: 24, mass: 0.9 }}>{projects.map((project, index) => <div className="project-entry" key={project.id} aria-hidden={index !== carouselIndex} inert={index !== carouselIndex}><ProjectDetail project={project} /></div>)}</motion.div></div><button className="carousel-control carousel-control-next" type="button" onClick={() => stepProject(1)} disabled={carouselIndex === projects.length - 1} aria-label="Ir para a próxima área"><span>Próximo</span><PiArrowRight aria-hidden="true" weight="bold" /></button></div></div>
+        <div className="projects-layout"><div className="projects-carousel-shell" onMouseEnter={() => setCarouselPaused(true)} onMouseLeave={() => setCarouselPaused(false)} onFocusCapture={() => setCarouselPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setCarouselPaused(false); }}><button className="carousel-control carousel-control-previous" type="button" onClick={() => stepProject(-1)} disabled={carouselIndex === 0} aria-label="Ir para a área anterior"><span>Anterior</span><PiArrowLeft aria-hidden="true" weight="bold" /></button><div className="projects-carousel" ref={projectsCarouselRef} role="region" aria-label={`Carrossel de frentes de atuação — área ${carouselIndex + 1} de ${projects.length}`} aria-roledescription="carrossel"><motion.div className="projects-list" drag="x" dragConstraints={projectsCarouselRef} dragElastic={0.06} dragMomentum={false} onDragEnd={handleProjectDragEnd} style={{ width: `${projects.length * 100}%` }} animate={{ x: `${-carouselIndex * (100 / projects.length)}%` }} transition={{ type: "spring", stiffness: 110, damping: 24, mass: 0.9 }}>{projects.map((project, index) => <div className="project-entry" style={{ flex: `0 0 ${100 / projects.length}%` }} key={project.id} aria-hidden={index !== carouselIndex} inert={index !== carouselIndex}><ProjectDetail project={project} /></div>)}</motion.div></div><button className="carousel-control carousel-control-next" type="button" onClick={() => stepProject(1)} disabled={carouselIndex === projects.length - 1} aria-label="Ir para a próxima área"><span>Próximo</span><PiArrowRight aria-hidden="true" weight="bold" /></button></div></div>
         <div className="selected-work" aria-labelledby="selected-work-title"><div className="selected-work-heading"><span className="eyebrow"><span className="eyebrow-line" /> Trabalhos selecionados</span><h3 id="selected-work-title">Produtos digitais em contextos reais.</h3></div><div className="selected-work-grid" role="region" aria-label="Carrossel de trabalhos selecionados" aria-roledescription="carrossel" tabIndex={0}>{selectedWork.map((work) => <article className="selected-work-card" key={work.title}><span className="selected-work-area">{work.area}</span><h4>{work.title}</h4><p>{work.description}</p><span className="selected-work-contribution">{work.contribution}</span>{work.url && <a href={work.url} target="_blank" rel="noreferrer">Visitar projeto <PiArrowRight aria-hidden="true" weight="bold" /></a>}</article>)}</div><p className="selected-work-hint" aria-hidden="true">Deslize para ver mais <PiArrowRight weight="bold" /></p></div>
         <div className="fit-panel" aria-labelledby="fit-title">
           <div className="fit-intro"><div className="eyebrow"><span className="eyebrow-line" /> Quando faz sentido conversar</div><h3 id="fit-title">Em que desafio posso ajudar?</h3><p>Trabalho melhor quando há uma decisão de produto a tomar e um problema concreto para resolver.</p></div>
