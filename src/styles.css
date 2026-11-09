@@ -1331,6 +1331,18 @@ h1 {
   background: var(--blue);
 }
 
+.button-whatsapp {
+  min-height: 56px;
+  padding-inline: 24px;
+  background: #25d366;
+  color: #07130b;
+  font-size: 13px;
+}
+
+.button-whatsapp:hover {
+  background: #1fbd5b;
+}
+
 .button-outline-dark {
   border: 1px solid #0b0b0b;
   background: transparent;
