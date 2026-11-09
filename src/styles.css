@@ -540,39 +540,10 @@ h1 {
 .hero-trust { justify-content: center; margin-inline: auto; }
 .hero-tags {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 28px;
-}
-
-.hero-tag-group {
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  min-width: 0;
-  padding-inline: 14px;
-}
-
-.hero-tag-group + .hero-tag-group {
-  border-left: 1px solid var(--line);
-}
-
-.hero-tag-group-title {
-  color: var(--gray);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.11em;
-  line-height: 1.2;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.hero-tag-list {
-  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
+  margin-top: 28px;
 }
 .proof-strip { margin-top: 46px; }
 
@@ -2103,19 +2074,11 @@ h1 {
   }
 
   .hero-tags {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
     margin-top: 24px;
-  }
-
-  .hero-tag-group {
-    padding: 9px 0 0;
-  }
-
-  .hero-tag-group + .hero-tag-group {
-    border-top: 1px solid var(--line);
-    border-left: 0;
   }
 
   .hero-trust {
