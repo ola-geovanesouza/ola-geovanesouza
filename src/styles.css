@@ -1055,7 +1055,7 @@ h1 {
   align-items: center;
   gap: 18px;
   min-height: 48px;
-  margin-top: 30px;
+  margin-top: 44px;
   padding: 0 18px;
   background: var(--white);
   color: var(--black);
@@ -1306,7 +1306,8 @@ h1 {
   right: 2%;
   bottom: 0.08em;
   z-index: -1;
-  color: rgba(11, 11, 11, 0.09);
+  color: rgba(11, 11, 11, 0.08);
+  -webkit-text-stroke: 1px rgba(11, 11, 11, 0.1);
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(72px, 20vw, 330px);
   font-weight: 700;
@@ -1315,6 +1316,15 @@ h1 {
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
+}
+
+.contact-watermark sup {
+  position: relative;
+  top: -0.75em;
+  margin-left: 0.04em;
+  font-size: 0.3em;
+  letter-spacing: 0;
+  -webkit-text-stroke-width: 0.5px;
 }
 
 .contact-section > :not(.contact-watermark) {
