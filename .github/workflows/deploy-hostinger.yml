@@ -1,0 +1,45 @@
+name: Deploy static site to Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hostinger-static-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Build the portfolio
+        run: |
+          npm ci
+          npm run build
+
+      - name: Publish built files to Hostinger branch
+        run: |
+          git worktree add -B hostinger /tmp/hostinger-static
+          git -C /tmp/hostinger-static rm -r --ignore-unmatch -- .
+          cp -R dist/client/. /tmp/hostinger-static/
+          rm -rf /tmp/hostinger-static/.vite
+          git -C /tmp/hostinger-static add --all
+          git -C /tmp/hostinger-static config user.name "github-actions[bot]"
+          git -C /tmp/hostinger-static config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C /tmp/hostinger-static commit -m "Build site from ${GITHUB_SHA}"
+          git -C /tmp/hostinger-static push --force origin hostinger
