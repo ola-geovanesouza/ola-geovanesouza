@@ -10,9 +10,17 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist", "client");
 const vite = await createServer({
   root,
+  plugins: [{
+    name: "static-motion-for-prerender",
+    enforce: "pre",
+    resolveId(source) {
+      if (source === "motion/react") return path.join(root, "scripts", "prerender-motion.mjs");
+    },
+  }],
+  optimizeDeps: { noDiscovery: true, include: [], entries: [] },
   // SSR runs inside the build script, so it does not need a live HMR socket.
   // Disabling it also avoids conflicts with the user's local preview server.
-  server: { middlewareMode: true, hmr: false },
+  server: { middlewareMode: true, hmr: false, preTransformRequests: false },
   appType: "custom",
   logLevel: "error",
 });

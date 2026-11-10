@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Use the apex HTTPS address as the single canonical host.
+RewriteCond %{HTTP_HOST} ^www\.geovanesouza\.com$ [NC]
+RewriteRule ^ https://geovanesouza.com%{REQUEST_URI} [R=301,L,NE]
+
+# Keep missing URLs as real 404 responses while giving visitors useful next steps.
+ErrorDocument 404 /404.html
+
+# Vite assets are content-hashed, so they can be cached for a year safely.
+<IfModule mod_headers.c>
+  <FilesMatch "^index-[A-Za-z0-9_-]+\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

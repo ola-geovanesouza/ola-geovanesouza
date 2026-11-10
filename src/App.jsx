@@ -175,19 +175,19 @@ function ArrowLink({ children, href = "#projetos", onClick }) {
 }
 
 function Brand({ footer = false }) {
-  return <span className={footer ? "footer-brand" : "brand-lockup"}><span className="brand-logo-crop" aria-hidden="true"><img src="/brand-gs.png" alt="" /></span>{footer ? <span>🌐⛳️</span> : <><span className="brand-divider">|</span><span>Geovane Souza</span></>}</span>;
+  return <span className={footer ? "footer-brand" : "brand-lockup"}><span className="brand-logo-crop" aria-hidden="true"><img src="/brand-gs.png" alt="" width="344" height="248" /></span>{footer ? <span>🌐⛳️</span> : <><span className="brand-divider">|</span><span>Geovane Souza</span></>}</span>;
 }
 
 function ProjectDetail({ project }) {
   return <article className={`project-detail project-detail-${project.accent}`}>
     <div className="detail-topline"><span>{project.number} / {String(projects.length).padStart(2, "0")}</span></div>
-    <div className="detail-image-wrap"><img src={project.image} alt={`Ilustração de ${project.client.toLowerCase()}: ${project.title}`} width="1536" height="1024" decoding="async" /></div>
+    <div className="detail-image-wrap"><img src={project.image} alt={`Ilustração de ${project.client.toLowerCase()}: ${project.title}`} width="1536" height="1024" loading="lazy" decoding="async" /></div>
     <div className="detail-content"><div className="project-card-meta"><span>{project.client}</span><span className={`project-dot project-dot-${project.accent}`} /></div><h3>{project.title}</h3><p>{project.description}</p><div className="detail-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><a className="detail-link" href="#contato" onClick={(event) => scrollToSection(event, "#contato")}>Conversar sobre um projeto <PiArrowRight aria-hidden="true" weight="bold" /></a></div>
   </article>;
 }
 
 function RecommendationCard({ recommendation, duplicate = false }) {
-  return <article className="recommendation-card" aria-hidden={duplicate || undefined}><PiQuotes aria-hidden="true" weight="fill" /><p>{recommendation.isSummary ? recommendation.text : `“${recommendation.text}”`}</p>{recommendation.longText && <details className="recommendation-more"><summary>Ler depoimento completo</summary><div>{recommendation.longText.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></details>}<div className="recommendation-person">{recommendation.image && <img src={recommendation.image} alt="" loading="lazy" decoding="async" /> }<div className="recommendation-person-copy"><strong>{recommendation.name}</strong><span>{recommendation.role}</span></div></div></article>;
+  return <article className="recommendation-card" aria-hidden={duplicate || undefined} inert={duplicate || undefined}><PiQuotes aria-hidden="true" weight="fill" /><p>{recommendation.isSummary ? recommendation.text : `“${recommendation.text}”`}</p>{recommendation.longText && <details className="recommendation-more"><summary>Ler depoimento completo</summary><div>{recommendation.longText.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></details>}<div className="recommendation-person">{recommendation.image && <img src={recommendation.image} alt="" loading="lazy" decoding="async" /> }<div className="recommendation-person-copy"><strong>{recommendation.name}</strong><span>{recommendation.role}</span></div></div></article>;
 }
 
 export function App() {
