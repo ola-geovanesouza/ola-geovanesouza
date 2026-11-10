@@ -175,7 +175,7 @@ function ArrowLink({ children, href = "#projetos", onClick }) {
 }
 
 function Brand({ footer = false }) {
-  return <span className={footer ? "footer-brand" : "brand-lockup"}><span className="brand-logo-crop" aria-hidden="true"><img src="/brand-gs.png" alt="" width="344" height="248" /></span>{footer ? <span>🌐⛳️</span> : <><span className="brand-divider">|</span><span>Geovane Souza</span></>}</span>;
+  return <span className={footer ? "footer-brand" : "brand-lockup"}><span className="brand-logo-crop" aria-hidden="true"><img src="/brand-gs-transparent.png" alt="" width="160" height="88" /></span>{footer ? <span>🌐⛳️</span> : <><span className="brand-divider">|</span><span>Geovane Souza</span></>}</span>;
 }
 
 function ProjectDetail({ project }) {

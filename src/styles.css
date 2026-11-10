@@ -220,8 +220,8 @@ a:focus-visible {
 
 .brand-logo-crop {
   display: inline-block;
-  width: 43px;
-  height: 32px;
+  width: 44px;
+  height: 25px;
   overflow: hidden;
   flex: 0 0 auto;
   background: transparent;
@@ -229,16 +229,22 @@ a:focus-visible {
 
 .brand-logo-crop img {
   display: block;
-  width: 86px;
-  max-width: none;
-  transform: translate(-20px, -12px);
-  filter: contrast(200);
-  mix-blend-mode: screen;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  filter: none;
+  mix-blend-mode: normal;
 }
 
-.site-shell[data-theme="light"] .site-nav .brand-logo-crop img {
-  filter: contrast(200);
-  mix-blend-mode: screen;
+.footer-brand .brand-logo-crop {
+  width: 31px;
+  height: 18px;
+}
+
+.footer-brand .brand-logo-crop img {
+  filter: brightness(0);
 }
 
 .brand-divider {
