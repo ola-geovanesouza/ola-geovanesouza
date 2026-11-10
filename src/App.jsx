@@ -148,7 +148,7 @@ const businesses = [
   { number: "02", title: "LeadFinder", type: "SaaS de prospecção B2B", description: "Plataforma para encontrar empresas, qualificar oportunidades e organizar o pipeline comercial.", status: "Sócio · Product Manager & Ops", accent: "blue", url: "https://leadfinderbr.com" },
   { number: "03", title: "GeoServices™ Tech", type: "Assistência técnica", description: "Diagnóstico, manutenção e suporte para computadores e equipamentos digitais.", status: "Fundador · Operação e atendimento", accent: "orange", url: "https://geoservices.tech" },
   { number: "04", title: "JovnArt | gs™", type: "Moda e curadoria", description: "Projeto de streetwear, sportswear e moda clássica feita na terra do samba.", status: "Marca · Moda e curadoria", accent: "yellow", url: "https://www.instagram.com/jovnart/" },
-  { number: "05", title: "Portal da Reputação", type: "Em desenvolvimento", description: "Novo produto digital na área de reputação de empresas e serviços.", status: "Próximo empreendimento", accent: "green", url: "https://portaldareputacao.com" },
+  { number: "05", title: "Portal da Reputação", type: "Em desenvolvimento", description: "Novo produto digital na área de reputação de empresas e serviços.", status: "Próximo empreendimento", accent: "green", url: "https://www.portaldareputacao.com/" },
 ];
 
 const recommendations = [

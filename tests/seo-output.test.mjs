@@ -28,7 +28,7 @@ test("structured data describes the visible person and canonical page", () => {
   const person = entities.find((item) => item["@type"] === "Person");
   const page = entities.find((item) => item["@type"] === "WebPage");
   assert.equal(person.name, "Geovane Vieira de Souza");
-  assert.equal(person.jobTitle, "Product Manager");
+  assert.equal(person.jobTitle, "Product Manager e Engenheiro de Software com foco em IA");
   assert.equal(page.url, "https://geovanesouza.com/");
   assert.equal(page.mainEntity["@id"], person["@id"]);
 });

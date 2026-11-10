@@ -17,6 +17,9 @@ const vite = await createServer({
       if (source === "motion/react") return path.join(root, "scripts", "prerender-motion.mjs");
     },
   }],
+  // Keep Motion inside Vite's SSR transform pipeline so the prerender-only
+  // shim removes initial hidden styles from the HTML sent to crawlers.
+  ssr: { noExternal: ["motion"] },
   optimizeDeps: { noDiscovery: true, include: [], entries: [] },
   // SSR runs inside the build script, so it does not need a live HMR socket.
   // Disabling it also avoids conflicts with the user's local preview server.
@@ -35,8 +38,12 @@ try {
   });
   const indexFile = path.join(dist, "index.html");
   const index = await readFile(indexFile, "utf8");
-  if (!index.includes('<div id="root"></div>')) throw new Error("Missing root mount point in built HTML");
-  await writeFile(indexFile, index.replace('<div id="root"></div>', `<div id="root">${body}</div>`));
+  const emptyRoot = index.replace(
+    /<div id="root">[\s\S]*?<\/div><\/div>(?=\s*<\/body>)/,
+    '<div id="root"></div>',
+  );
+  if (!emptyRoot.includes('<div id="root"></div>')) throw new Error("Missing root mount point in built HTML");
+  await writeFile(indexFile, emptyRoot.replace('<div id="root"></div>', `<div id="root">${body}</div>`));
   console.log(`Prerendered homepage content into dist/client/index.html (${body.length} characters)`);
 } finally {
   await vite.close();
