@@ -35,7 +35,7 @@ try {
     const built = manifest[`src/assets/${filename}`]?.file;
     if (!built) throw new Error(`Missing built asset for prerender: ${filename}`);
     return `/${built}`;
-  });
+  }).replace(/>\s+</g, "><").trim();
   const indexFile = path.join(dist, "index.html");
   const index = await readFile(indexFile, "utf8");
   const emptyRoot = index.replace(

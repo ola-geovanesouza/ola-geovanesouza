@@ -1,0 +1,15 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
+  "name": "com.geovanesouza/portfolio",
+  "version": "1.0.0",
+  "title": "Portfólio de Geovane Souza",
+  "description": "Consulta pública do portfólio profissional de Geovane Souza.",
+  "websiteUrl": "https://geovanesouza.com/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://geovanesouza.com/mcp",
+      "supportedProtocolVersions": ["2026-07-28", "2025-11-25", "2025-06-18"]
+    }
+  ]
+}

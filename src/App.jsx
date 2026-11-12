@@ -48,8 +48,8 @@ const projects = [
     client: "Atuação",
     title: "Multidisciplinaridade t-shaped",
     description:
-      "Contribuo em times de produto, design e engenharia, assumindo responsabilidades de Product Manager, Product Lead, Tech Lead, UX Designer, Product Designer e AI Engineer. Conecto descoberta do problema, estratégia, experiência e tecnologia para levar produtos da ideia à evolução contínua.",
-    tags: ["Product Management", "Product Lead", "Tech Lead", "UX / UI", "Product Design", "AI Engineering"],
+      "Contribuo em times de produto, design e engenharia, assumindo responsabilidades de Product Manager, Head de Produto, Head de AI, Product Lead, Tech Lead, Product Ops, PMM, GTM, UX Designer, Product Designer e AI Engineer. Conecto descoberta do problema, estratégia, experiência e tecnologia para levar produtos da ideia à evolução contínua.",
+    tags: ["Product Management", "Head de Produto", "Head de AI", "Product Lead", "Tech Lead", "Product Ops", "PMM", "GTM", "UX / UI", "Product Design", "AI Engineering"],
     image: casePracticeImage,
     accent: "orange",
   },
@@ -59,8 +59,8 @@ const projects = [
     client: "Empreendedorismo",
     title: "Ecossistema de negócios",
     description:
-      "Participo da construção e da operação da Young DevOps, da LeadFinder e da GeoServices Tech. Também desenvolvo a JovnArt, projeto de moda e curadoria. Em cada frente, conecto produto, posicionamento e execução.",
-    tags: ["Young DevOps", "LeadFinder", "GeoServices Tech", "JovnArt"],
+      "Participo da construção e da operação da Young DevOps, da LeadFinder e da GeoServices Tech. Também desenvolvo a JovnArt e o Portal da Reputação, com o conceito CITH: Conect in the home. Em cada frente, conecto produto, posicionamento e execução.",
+    tags: ["Young DevOps", "LeadFinder", "GeoServices Tech", "JovnArt", "Portal da Reputação", "CITH: Conect in the home"],
     image: caseEntrepreneurshipImage,
     accent: "green",
   },
@@ -70,8 +70,8 @@ const projects = [
     client: "Segmentos",
     title: "Experiência em 13 segmentos",
     description:
-      "Já trabalhei com Educação, Saúde, iGaming, Moda, ONGs, Tecnologia, Química, Logística, Gestão, Jurídico, Hotelaria, Entretenimento e Música.",
-    tags: ["Educação", "Saúde", "iGaming", "Tecnologia"],
+      "Experiência em diferentes contextos de negócio, conectando produto, operação, experiência e tecnologia às necessidades de cada mercado.",
+    tags: ["Educação", "Saúde", "iGaming", "Moda", "ONGs", "Tecnologia", "Química", "Logística", "Gestão", "Jurídico", "Hotelaria", "Entretenimento", "Música"],
     image: caseSegmentsImage,
     accent: "yellow",
   },
@@ -82,7 +82,7 @@ const projects = [
     title: "Portfólio de produtos digitais",
     description:
       "Projetos em saúde, educação, entretenimento, iGaming e outros mercados: Atlas AI, Cuida e Amor, EduServen, Dot10 e Esportiva PvP. Uma seleção de produtos e experiências digitais em diferentes contextos.",
-    tags: ["Atlas AI", "Cuida e Amor", "EduServen", "Dot10", "Esportiva PvP", "Outros"],
+    tags: ["Atlas AI", "Cuida e Amor", "EduServen", "Dot10", "Esportiva PvP", "HotelAI", "Postpilot/IO", "ERPsoft", "Legacy Music Group", "Beatriz Sousa", "Party.app", "Outros"],
     image: casePortfolioImage,
     accent: "blue",
   },
@@ -196,7 +196,6 @@ export function App() {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [carouselDirection, setCarouselDirection] = useState(1);
   const [carouselPaused, setCarouselPaused] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [whatsappVisible, setWhatsappVisible] = useState(() =>
     typeof window !== "undefined" && Boolean(window.location.hash && window.location.hash !== "#top"),
   );
@@ -273,9 +272,14 @@ export function App() {
     <header className="site-nav">
       <a className="brand-link" href="#top" aria-label="Geovane Souza — voltar ao início" onClick={(event) => scrollToSection(event, "#top")}><Brand /></a>
       <nav className="desktop-nav" aria-label="Navegação principal">{navItems.map((item) => <a key={item.href} href={item.href} onClick={(event) => scrollToSection(event, item.href)}>{item.label}</a>)}</nav>
-      <button className="mobile-menu-toggle" type="button" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen((isOpen) => !isOpen)}>{menuOpen ? <PiX aria-hidden="true" weight="bold" /> : <PiList aria-hidden="true" weight="bold" />}</button>
+      <details className="mobile-nav-disclosure" onKeyDown={(event) => { if (event.key === "Escape") { event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}>
+        <summary className="mobile-menu-toggle" aria-label="Menu do site" aria-controls="mobile-navigation">
+          <PiList className="mobile-menu-open-icon" aria-hidden="true" weight="bold" />
+          <PiX className="mobile-menu-close-icon" aria-hidden="true" weight="bold" />
+        </summary>
+        <nav id="mobile-navigation" className="mobile-menu" aria-label="Navegação mobile">{navItems.map((item) => <a key={item.href} href={item.href} onClick={(event) => { event.currentTarget.closest("details")?.removeAttribute("open"); scrollToSection(event, item.href); }}>{item.label}<PiArrowDownRight aria-hidden="true" weight="bold" /></a>)}</nav>
+      </details>
       <a className="availability-pill" href="#contato" aria-label="Disponível para conversar sobre projetos" onClick={(event) => scrollToSection(event, "#contato")}><span className="availability-dot" aria-hidden="true" />Disponível</a>
-      {menuOpen && <nav className="mobile-menu" aria-label="Navegação mobile">{navItems.map((item) => <a key={item.href} href={item.href} onClick={(event) => { setMenuOpen(false); scrollToSection(event, item.href); }}>{item.label}<PiArrowDownRight aria-hidden="true" weight="bold" /></a>)}</nav>}
     </header>
 
     <main id="main-content">
@@ -303,7 +307,7 @@ export function App() {
         <div className="selected-work" aria-labelledby="selected-work-title"><div className="selected-work-heading"><span className="eyebrow"><span className="eyebrow-line" /> Trabalhos selecionados</span><h3 id="selected-work-title">Produtos digitais em contextos reais.</h3></div><div className="selected-work-grid" role="region" aria-label="Carrossel de trabalhos selecionados" aria-roledescription="carrossel" tabIndex={0}>{selectedWork.map((work, index) => <motion.article className="selected-work-card" key={work.title} initial={{ opacity: 0, y: 38, scale: 0.94 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: 0.18 }} transition={{ type: "spring", stiffness: 78, damping: 18, delay: index * 0.1 }}><span className="selected-work-area">{work.area}</span><h4>{work.title}</h4><p>{work.description}</p><span className="selected-work-contribution">{work.contribution}</span>{work.url && <a href={work.url} target="_blank" rel="noreferrer">Visitar projeto <PiArrowRight aria-hidden="true" weight="bold" /></a>}</motion.article>)}</div><p className="selected-work-hint" aria-hidden="true">Deslize para ver mais <PiArrowRight weight="bold" /></p></div>
         <div className="fit-panel" aria-labelledby="fit-title">
           <div className="fit-intro"><div className="eyebrow"><span className="eyebrow-line" /> Quando faz sentido conversar</div><h3 id="fit-title">Em que desafio posso ajudar?</h3><p>Trabalho melhor quando há uma decisão de produto a tomar e um problema concreto para resolver.</p></div>
-          <div className="fit-grid" role="region" aria-label="Desafios em que posso ajudar — deslize para ver todos" tabIndex={0}>{fitSituations.map((situation) => <article className="fit-item" key={situation.number}><span>{situation.number}</span><h4>{situation.title}</h4><p>{situation.description}</p></article>)}</div>
+          <div className="fit-grid" role="region" aria-label="Desafios em que posso ajudar — deslize para ver todos" tabIndex={0}>{fitSituations.map((situation, index) => <motion.div className="fit-item-motion" key={situation.number} initial={{ opacity: 0, y: 34, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: 0.35 }} transition={{ type: "spring", stiffness: 88, damping: 18, delay: index * 0.16 }} whileHover={{ scale: 1.012, transition: { type: "spring", stiffness: 360, damping: 24 } }}><article className="fit-item"><span>{situation.number}</span><h4>{situation.title}</h4><p>{situation.description}</p></article></motion.div>)}</div>
           <a className="fit-cta" href="#contato" onClick={(event) => scrollToSection(event, "#contato")}>Descrever meu desafio <PiArrowRight aria-hidden="true" weight="bold" /></a>
         </div>
       </motion.section>
@@ -318,7 +322,7 @@ export function App() {
       </div>
     </main>
 
-    <footer className="site-footer"><Brand footer /><span>Salvador, BA · 2026</span><a href="#top" onClick={(event) => scrollToSection(event, "#top")}>Voltar ao topo <PiArrowUp aria-hidden="true" weight="bold" /></a></footer>
+    <footer className="site-footer"><Brand footer /><nav className="footer-links" aria-label="Informações do site"><a href="/sobre/">Sobre mim</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a></nav><span>Salvador, BA · 2026</span><a href="#top" onClick={(event) => scrollToSection(event, "#top")}>Voltar ao topo <PiArrowUp aria-hidden="true" weight="bold" /></a></footer>
     <a className={`whatsapp-fab${whatsappVisible ? " is-visible" : ""}`} href="https://wa.me/5571988895138" target="_blank" rel="noreferrer" aria-label="Conversar pelo WhatsApp" aria-hidden={!whatsappVisible} tabIndex={whatsappVisible ? 0 : -1}><PiWhatsappLogo aria-hidden="true" weight="fill" /></a>
   </div></MotionConfig>;
 }

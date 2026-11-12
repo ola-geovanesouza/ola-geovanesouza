@@ -1,0 +1,39 @@
+# Geovane Souza
+
+> Portfolio of Geovane Souza, Product Manager and Software Engineer focused on applied AI, based in Salvador, Bahia, Brazil.
+
+This Portuguese-language site describes Geovane's work across digital product strategy and delivery, applied AI, UX/design, software engineering, and business operations. It includes selected project work, operating businesses, professional recognition, recommendations, a short biography, and contact options.
+
+## Key pages
+
+- [Home and portfolio](https://geovanesouza.com/): overview, six areas of work, selected digital products, businesses, recognition, biography, and contact.
+- [About Geovane Souza](https://geovanesouza.com/sobre/): professional profile and working approach.
+- [Contact](https://geovanesouza.com/contato/): public email, WhatsApp, LinkedIn, and résumé.
+- [Privacy](https://geovanesouza.com/privacidade/): notes on analytics, external links, and data handling.
+- [Markdown homepage](https://geovanesouza.com/index.md): concise text representation of the site.
+
+## Selected projects
+
+- Atlas AI: internal EA ecosystem tool integrating MCPs and APIs to automate decisions, surface operational risks, and streamline processes with Claude.
+- Cuida e Amor: learning platform and site for training caregivers of older adults.
+- EduServen: educational management SaaS for public and private schools.
+- Dot10: website and digital platform project for iGaming.
+
+## Businesses
+
+- [Young DevOps](https://youngdevops.com.br): tech house for custom digital product development; Geovane is a partner focused on product and AI.
+- [LeadFinder](https://leadfinderbr.com): B2B prospecting SaaS; Geovane is a partner and Product Manager & Ops.
+- [GeoServices Tech](https://geoservices.tech): technical support for computers and digital equipment.
+- [JovnArt | gs™](https://www.instagram.com/jovnart/): fashion and curation project.
+- [Portal da Reputação](https://www.portaldareputacao.com/): digital product about company and service reputation, currently in development.
+
+## Public evidence
+
+The site reports five professional performance recognitions, more than ten LinkedIn recommendations, and Brazilian computer-program registration BR512025000624-1, granted by INPI on 2025-02-18. These are claims presented by the portfolio owner; consult the linked profile and INPI record for independent confirmation.
+
+## Contact
+
+- Email: [ola@geovanesouza.com](mailto:ola@geovanesouza.com)
+- WhatsApp: [wa.me/5571988895138](https://wa.me/5571988895138)
+- [LinkedIn profile](https://www.linkedin.com/in/ola-geovanesouza/)
+- [Résumé PDF](https://geovanesouza.com/cv-geovane-vieira-de-souza-pt-br.pdf)

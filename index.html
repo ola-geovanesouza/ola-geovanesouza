@@ -17,6 +17,7 @@
     <meta name="description" content="Geovane Souza é Product Manager e Engenheiro de Software com foco em IA. Atua com produto digital, IA aplicada, design e operação de negócios." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://geovanesouza.com/" />
+    <link rel="alternate" type="text/markdown" href="https://geovanesouza.com/index.md" title="Versão Markdown" />
     <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:type" content="website" />
@@ -44,7 +45,7 @@
             "url": "https://geovanesouza.com/",
             "name": "Geovane Souza",
             "inLanguage": "pt-BR",
-            "publisher": { "@id": "https://geovanesouza.com/#person" }
+            "publisher": { "@id": "https://geovanesouza.com/#organization" }
           },
           {
             "@type": "WebPage",
@@ -66,7 +67,46 @@
             "email": "mailto:ola@geovanesouza.com",
             "description": "Product Manager e Engenheiro de Software com foco em IA aplicada a produtos digitais, design e operação de negócios.",
             "homeLocation": { "@type": "Place", "name": "Salvador, Bahia, Brasil" },
-            "sameAs": ["https://www.linkedin.com/in/ola-geovanesouza/"]
+            "sameAs": [
+              "https://www.linkedin.com/in/ola-geovanesouza/",
+              "https://github.com/ola-geovanesouza"
+            ]
+          },
+          {
+            "@type": ["Organization", "ProfessionalService"],
+            "@id": "https://geovanesouza.com/#organization",
+            "name": "Geovane Souza",
+            "url": "https://geovanesouza.com/",
+            "description": "Atuação profissional independente em gestão de produto digital, IA aplicada, UX e engenharia de software.",
+            "email": "ola@geovanesouza.com",
+            "logo": "https://geovanesouza.com/brand-gs-transparent.png",
+            "areaServed": { "@type": "City", "name": "Salvador, Bahia, Brasil" },
+            "founder": { "@id": "https://geovanesouza.com/#person" },
+            "contactPoint": { "@type": "ContactPoint", "contactType": "professional inquiries", "email": "ola@geovanesouza.com", "url": "https://geovanesouza.com/contato/", "availableLanguage": "Portuguese" },
+            "sameAs": [
+              "https://www.linkedin.com/in/ola-geovanesouza/",
+              "https://github.com/ola-geovanesouza"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Serviços profissionais",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestão de produto digital", "serviceType": "Product Management, discovery e priorização" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IA aplicada a produtos e operações", "serviceType": "Automação, agentes e protótipos de IA" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UX, design e engenharia de software", "serviceType": "Design de produto, experiência e engenharia de software" } }
+              ]
+            }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://geovanesouza.com/#portfolio",
+            "name": "Trabalhos selecionados",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "item": { "@type": "CreativeWork", "name": "Atlas AI", "description": "Ferramenta intranet que integra MCPs e APIs do ecossistema EA para automatizar decisões e agilizar processos com Claude." } },
+              { "@type": "ListItem", "position": 2, "item": { "@type": "CreativeWork", "name": "Cuida e Amor", "url": "https://cuidaeamor.com.br/", "description": "Site integrado a uma plataforma de cursos e treinamento para cuidadores de idosos." } },
+              { "@type": "ListItem", "position": 3, "item": { "@type": "CreativeWork", "name": "EduServen", "description": "Produto SaaS de gestão educacional para escolas públicas e privadas." } },
+              { "@type": "ListItem", "position": 4, "item": { "@type": "CreativeWork", "name": "Dot10", "description": "Projeto de site e plataforma digital para o mercado de iGaming." } }
+            ]
           }
         ]
       }
@@ -75,5 +115,6 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script defer src="/webmcp.js"></script>
   </body>
 </html>

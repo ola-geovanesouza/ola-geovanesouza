@@ -4,11 +4,26 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.geovanesouza\.com$ [NC]
 RewriteRule ^ https://geovanesouza.com%{REQUEST_URI} [R=301,L,NE]
 
+# Offer a concise Markdown version when an agent explicitly requests it.
+AddType text/markdown .md
+RewriteCond %{HTTP_ACCEPT} text/markdown [NC]
+RewriteRule ^$ /index.md [END]
+
+# Stateless, read-only MCP endpoint and its discovery card.
+RewriteRule ^mcp/?$ /mcp.php [END]
+RewriteRule ^mcp/server-card/?$ /.well-known/mcp/server-card.json [END]
+
 # Keep missing URLs as real 404 responses while giving visitors useful next steps.
 ErrorDocument 404 /404.html
 
 # Vite assets are content-hashed, so they can be cached for a year safely.
 <IfModule mod_headers.c>
+  Header append Vary Accept
+  <Files "server-card.json">
+    Header set Content-Type "application/mcp-server-card+json"
+    Header set Cache-Control "public, max-age=3600"
+    Header set Access-Control-Allow-Origin "*"
+  </Files>
   <FilesMatch "^index-[A-Za-z0-9_-]+\.(css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
