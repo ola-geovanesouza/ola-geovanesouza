@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, MotionConfig, useAnimate, useScroll, useSpring } from "motion/react";
+import { motion, MotionConfig, useAnimate } from "motion/react";
 import {
   PiArrowDownRight,
   PiArrowLeft,
@@ -185,9 +185,21 @@ function Brand({ footer = false }) {
 }
 
 function PageProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
-  return <motion.div className="page-progress" aria-hidden="true" style={{ scaleX }} />;
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const updateProgress = () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(maxScroll > 0 ? window.scrollY / maxScroll : 0);
+    };
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+    };
+  }, []);
+  return <motion.div className="page-progress" aria-hidden="true" style={{ scaleX: progress }} />;
 }
 
 function ProjectDetail({ project }) {
