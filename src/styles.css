@@ -143,8 +143,15 @@ a:focus-visible {
   color: #0b0b0b;
 }
 
-.light-content > .projects-section {
-  padding-top: calc(var(--transition-gap) / 2);
+.page-progress {
+  position: fixed;
+  z-index: 120;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--blue), #8b4ed5 34%, var(--orange) 67%, var(--green));
+  pointer-events: none;
 }
 
 .site-shell[data-theme="light"] .project-card,
@@ -345,6 +352,17 @@ a:focus-visible {
   margin-inline: auto;
   font-size: clamp(56px, 8.4vw, 118px);
   line-height: 0.98;
+}
+
+.hero-title-line {
+  display: block;
+  overflow: clip;
+}
+
+.hero-title-inner {
+  display: block;
+  transform-origin: center bottom;
+  will-change: transform, opacity, filter;
 }
 
 .hero-bottom {
@@ -2627,6 +2645,8 @@ h1 {
   .recommendations-track {
     animation: none;
   }
+
+  .page-progress { display: none; }
 
   .hero-accent-line,
   .hero-product-name { animation: none !important; }

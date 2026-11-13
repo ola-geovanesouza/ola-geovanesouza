@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, MotionConfig, useAnimate } from "motion/react";
+import { motion, MotionConfig, useAnimate, useScroll, useSpring } from "motion/react";
 import {
   PiArrowDownRight,
   PiArrowLeft,
@@ -27,8 +27,11 @@ import carolineSantanaPortrait from "./assets/recommendations/caroline-santana.w
 import trajanoMontassierPortrait from "./assets/recommendations/trajano-montassier.webp";
 import robertoCarlosPortrait from "./assets/recommendations/roberto-carlos.webp";
 import rodolfoGeyerPortrait from "./assets/recommendations/rodolfo-geyer.webp";
+import samuelTudePortrait from "./assets/recommendations/samuel-tude.webp";
 import tiagoFerreiraPortrait from "./assets/recommendations/tiago-ferreira.webp";
 import beatrizSousaPortrait from "./assets/recommendations/beatriz-sousa.webp";
+import deivideLucasPortrait from "./assets/recommendations/deivide-lucas.png";
+import gustavoFerreiraPortrait from "./assets/recommendations/gustavo-ferreira.png";
 
 const projects = [
   {
@@ -59,8 +62,8 @@ const projects = [
     client: "Empreendedorismo",
     title: "Ecossistema de negócios",
     description:
-      "Participo da construção e da operação da Young DevOps, da LeadFinder e da GeoServices Tech. Também desenvolvo a JovnArt e o Portal da Reputação, com o conceito CITH: Conect in the home. Em cada frente, conecto produto, posicionamento e execução.",
-    tags: ["Young DevOps", "LeadFinder", "GeoServices Tech", "JovnArt", "Portal da Reputação", "CITH: Conect in the home"],
+      "Participo da construção e da operação da Young DevOps, da LeadFinder e da GeoServices Tech. Também desenvolvo a JovnArt e o Portal da Reputação, com o conceito CITH - Connect in the home. Em cada frente, conecto produto, posicionamento e execução.",
+    tags: ["Young DevOps", "LeadFinder", "GeoServices Tech", "JovnArt", "Portal da Reputação", "CITH - Connect in the home"],
     image: caseEntrepreneurshipImage,
     accent: "green",
   },
@@ -152,15 +155,18 @@ const businesses = [
 ];
 
 const recommendations = [
-  { name: "André Castro", role: "Diretor Executivo da Morais de Castro", text: "Geovane demonstra profissionalismo e comprometimento. Tem atitude proativa e com foco na resolução das tarefas e desafios.", image: andreMoraisPortrait },
+  { name: "André Castro", role: "Diretor Executivo na Morais de Castro", text: "Geovane demonstra profissionalismo e comprometimento. Tem atitude proativa e com foco na resolução das tarefas e desafios.", image: andreMoraisPortrait },
   { name: "Rodolfo Augusto Geyer Junior", role: "Sócio na CTech & CTO na EA Entretenimento", text: "Tive a oportunidade de trabalhar com Geovane e acompanhar de perto sua forma de conduzir desafios e projetos.", image: rodolfoGeyerPortrait, longText: ["É raro e fascinante a capacidade de se conectar com outras pessoas de outros times. Talvez a pessoa que mais pode definir a palavra ‘conexão’ — que em um time de tecnologia é de extrema importância.", "Outro ponto que sempre me chamou atenção é sua disponibilidade para colaborar e compartilhar conhecimento, contribuindo não apenas com suas próprias entregas, mas também com o desenvolvimento de quem trabalha ao seu redor. Tanto que normalmente estava no top do nosso ranking interno!", "Sem dúvida, é um profissional que agrega muito a qualquer equipe e que eu recomendo com total confiança!"] },
+  { name: "Deivide Lucas", role: "Head de Arte na EA Entretenimento", text: "Um profissional exemplar e extremamente capacitado, agregou muito em meu trabalho, além de compartilhar diversas técnicas para otimizar o fluxo de trabalho, ficarei honrado em trabalhar com você novamente.", image: deivideLucasPortrait },
+  { name: "Gustavo Ferreira", role: "Engenheiro de software na EA Entretenimento", text: "Trabalhei com o Geovane quando ele atuava como Head de Produto e IA e posso dizer que ele une muito bem visão de produto e entendimento técnico. Sabe traduzir problemas de negócio em soluções concretas, prioriza com clareza e conversa de igual pra igual com o time de desenvolvimento. Além disso, é uma liderança acessível, que dá autonomia e puxa o time pra cima. Recomendo sem hesitar.", image: gustavoFerreiraPortrait },
   { name: "Roberto Carlos", role: "CTO na Young DevOps", text: "Profissional de grande excelência em tecnologia, com ótimos documentos de projetos e protótipos de estilo moderno.", image: robertoCarlosPortrait },
+  { name: "Samuel Tude", role: "Partnership Manager na Good Game Labs", text: "Trabalhar com Geovane foi, sem dúvida, uma das melhores parcerias profissionais que já tive.", image: samuelTudePortrait, longText: ["Como Head de Produto e de IA, ele demonstrou um conhecimento técnico absurdo e uma visão de negócio de ponta a ponta. Ele não apenas estruturou e conduziu o roadmap de produto com maestria, como também foi a força motriz na implementação de soluções de Inteligência Artificial em diversas verticais da nossa operação.", "O que mais admiro no Geo é a sua capacidade de resolver problemas complexos com extrema seriedade e foco na entrega, sem nunca perder o bom humor e a leveza no trato diário. Ele é aquele tipo raro de líder que garante resultados de alto impacto e, ao mesmo tempo, melhora o clima de qualquer equipe. Um especialista excepcional com quem aprendi demais. Recomendo fortemente o seu trabalho!"] },
   { name: "Paulo Queiroz", role: "Gerente de TI na OAB-Bahia", text: "Geovane é um profissional dedicado e comprometido com os estudos, e sua evolução profissional.", image: pauloQueirozPortrait },
   { name: "Trajano Montassier", role: "Coordenador de TI na Morais de Castro", text: "Tive o privilégio de liderar Geovane durante seu tempo na MC, e afirmo que ele foi competente, dedicado e comprometido.", image: trajanoMontassierPortrait },
   { name: "Hugo Melim", role: "Account Manager na Altenar", text: "Geovane é um visionário de Produto", image: hugoMelimPortrait },
   { name: "Tiago Ferreira", role: "Gestor na Cuida e Amor", text: "Agradeço à Geovane por ser parte fundamental da nossa jornada de transformação, e estamos ansiosos para continuar essa trajetória futuramente.", image: tiagoFerreiraPortrait },
   { name: "Caroline Santana", role: "Analista de Desenvolvimento na Stefanini", text: "Geovane é um profissional proativo e sempre empenhado em oferecer soluções para otimizar as atividades da empresa.", image: carolineSantanaPortrait },
-  { name: "Jônathas Moreira", role: "Analista de Cybersecurity SOC na TLD", text: "Tive a imensa oportunidade de trabalhar na mesma equipe que Geovane, extremamente qualificado e sempre em busca de novos aprendizados.", image: jonathasMoreiraPortrait },
+  { name: "Jônathas Moreira", role: "Analista de Cybersecurity na TLD", text: "Tive a imensa oportunidade de trabalhar na mesma equipe que Geovane, extremamente qualificado e sempre em busca de novos aprendizados.", image: jonathasMoreiraPortrait },
   { name: "Beatriz Sousa", role: "Ativista no Instituto Odara", text: "Desde o começo eu fiquei super feliz com a atenção aos detalhes, a comunicação aberta e todo o esforço de Geovane pra deixar tudo do jeitinho que eu imaginava. Ótimo profissional!", image: beatrizSousaPortrait },
 ];
 
@@ -176,6 +182,12 @@ function ArrowLink({ children, href = "#projetos", onClick }) {
 
 function Brand({ footer = false }) {
   return <span className={footer ? "footer-brand" : "brand-lockup"}><span className="brand-logo-crop" aria-hidden="true"><img src="/brand-gs-transparent.png" alt="" width="160" height="88" /></span>{footer ? <span>🌐⛳️</span> : <><span className="brand-divider">|</span><span>Geovane Souza</span></>}</span>;
+}
+
+function PageProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+  return <motion.div className="page-progress" aria-hidden="true" style={{ scaleX }} />;
 }
 
 function ProjectDetail({ project }) {
@@ -259,7 +271,7 @@ export function App() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     animateHero(".hero-main > .eyebrow", { opacity: [0, 1], y: [12, 0] }, { duration: 0.45, ease: "easeOut" });
-    animateHero(".hero-main h1", { opacity: [0, 1], y: [34, 0], scale: [0.96, 1] }, { delay: 0.08, duration: 0.9, ease: [0.16, 1, 0.3, 1] });
+    animateHero(".hero-title-inner", { opacity: [0, 1], y: ["110%", "0%"], filter: ["blur(8px)", "blur(0px)"] }, { delay: 0.08, duration: 0.95, ease: [0.16, 1, 0.3, 1], stagger: 0.16 });
     animateHero(".hero-accent-line", { scaleX: [0, 1] }, { delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] });
     animateHero(".hero-bottom", { opacity: [0, 1], y: [18, 0] }, { delay: 0.34, duration: 0.65, ease: "easeOut" });
     animateHero(".hero-trust, .hero-tags", { opacity: [0, 1], y: [12, 0] }, { delay: 0.58, duration: 0.6, ease: "easeOut" });
@@ -268,6 +280,7 @@ export function App() {
 
 
   return <MotionConfig reducedMotion="user"><div className="site-shell" data-theme="light">
+    <PageProgress />
     <a className="skip-link" href="#main-content">Pular para o conteúdo</a>
     <header className="site-nav">
       <a className="brand-link" href="#top" aria-label="Geovane Souza — voltar ao início" onClick={(event) => scrollToSection(event, "#top")}><Brand /></a>
@@ -286,7 +299,7 @@ export function App() {
       <section className="hero section-frame" id="top" aria-labelledby="hero-title">
         <div className="hero-main" ref={heroScope}>
           <div className="eyebrow">Produto, IA e Negócios</div>
-          <h1 id="hero-title">Do problema ao <span className="text-blue hero-product-name">produto digital</span> que <span className="text-green">funciona.</span></h1>
+          <h1 id="hero-title" aria-label="Do problema ao produto digital que funciona."><span className="hero-title-line" aria-hidden="true"><span className="hero-title-inner">Do problema ao</span></span><span className="hero-title-line" aria-hidden="true"><span className="hero-title-inner"><span className="text-blue hero-product-name">produto digital</span> que <span className="text-green">funciona.</span></span></span></h1>
           <span className="hero-accent-line" aria-hidden="true" />
           <div className="hero-bottom">
             <p className="hero-lede">Ajudo empresas e profissionais a definir prioridades, criar produtos e aplicar IA para otimizar UX, ROI e a operação.</p>

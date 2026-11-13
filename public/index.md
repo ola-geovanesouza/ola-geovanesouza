@@ -1,6 +1,6 @@
-# Geovane Souza
+# Geovane Souza | Produto, IA e Negócios
 
-Product Manager e Engenheiro de Software com foco em IA, em Salvador, Bahia, Brasil. Atuação em produto digital, IA aplicada, UX, design, engenharia de software e operação de negócios.
+Geovane Souza atua entre produto digital, inteligência artificial aplicada, engenharia de software e negócios. Conecta estratégia e execução para transformar problemas reais em produtos úteis e operações melhores.
 
 ## Sobre
 
